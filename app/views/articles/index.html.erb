@@ -1,17 +1,20 @@
-<h1>Listing articles</h1>
+<h1>Lista de Posts</h1>
 
-<%= link_to 'New article', new_article_path %>
+<%= link_to 'Criar novo post', new_article_path %>
+
 <table>
   <tr>
-    <th>Title</th>
-    <th>Text</th>
+    <th>Título</th>
+    <th>Texto</th>
+    <th colspan="2"></th> <!--#define o numero de colunas na tabela, acredito que seja o Mostrar e Editar-->
   </tr>
  
   <% @articles.each do |article| %>
     <tr>
       <td><%= article.title %></td>
       <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
+      <td><%= link_to 'Mostrar', article_path(article) %></td>
+      <td><%= link_to 'Editar', edit_article_path(article) %></td>
     </tr>
   <% end %>
 </table>
