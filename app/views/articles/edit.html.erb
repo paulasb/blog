@@ -1,4 +1,4 @@
-<h1>Edit article</h1>
+<h1>Editar Post</h1>
  
 <%= form_with(model: @article) do |form| %>
  
@@ -17,17 +17,17 @@
   <% end %>
  
   <p>
-    <%= form.label :title %><br>
+    <%= form.label :title, 'Título' %><br>
     <%= form.text_field :title %>
   </p>
  
   <p>
-    <%= form.label :text %><br>
+    <%= form.label :Texto %><br>
     <%= form.text_area :text %>
   </p>
  
   <p>
-    <%= form.submit %>
+    <%= form.submit 'Editar Post' %>
   </p>
  
 <% end %>

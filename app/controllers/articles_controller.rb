@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
     # esse if indica para o usuario qual o erro da validacao no formulario
     # apesar da validacao estar ok em app/models/article
     # ela deve ser mostrada ao usuario
-    if @article.sav
+    if @article.save
       # faz uma nova requisicao,
       # mostrando o article que abacou de ser criado?
       redirect_to @article
@@ -47,6 +47,13 @@ class ArticlesController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to articles_path
   end
 
   private

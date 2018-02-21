@@ -1,0 +1,36 @@
+<!-- Este arquivo não está em uso
+A função dele otimizar códigos duplicados
+A página Editar e Criar são bem similares, então é 
+possível fazer apenas um arquivo, no caso _form (uso 
+do _ por convenção para duplicidade de código) para realizar
+a função das duas páginas com apenas um arquivo escrito, e nas páginas
+que serão utilizadas, esse código é chamada por meio de: 
+<= render 'form' > , verificar sintaxe, falta %--> 
+
+<%= form_with model: @article, local: true do |form| %>
+ 
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@article.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= form.label :Título %><br>
+    <%= form.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :Texto %><br>
+    <%= form.text_area :text %>
+  </p>
+ 
+<% end %>

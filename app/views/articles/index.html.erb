@@ -1,20 +1,42 @@
-<h1>Lista de Posts</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Blog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Criar novo post', new_article_path, class:"nav-link"%>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<%= link_to 'Criar novo post', new_article_path %>
-
-<table>
-  <tr>
-    <th>Título</th>
-    <th>Texto</th>
-    <th colspan="2"></th> <!--#define o numero de colunas na tabela, acredito que seja o Mostrar e Editar-->
-  </tr>
- 
-  <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= link_to 'Mostrar', article_path(article) %></td>
-      <td><%= link_to 'Editar', edit_article_path(article) %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="my-4">Blog</h1>
+      <!-- Blog Post -->
+      <div class="card mb-4">
+        <% @articles.each do |article| %>
+          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title"><%= article.title %></h2>
+            <p class="card-text"><%= article.text %></p>
+            <%= link_to 'Leia mais', article_path(article), class:"btn btn-primary" %>
+            <%= link_to 'Editar', edit_article_path(article), class:"btn btn-primary"  %>
+            <%= link_to 'Deletar', article_path(article), class:"btn btn-primary", 
+                            method: :delete,
+                            data: { confirm: 'Você tem certeza?' } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
