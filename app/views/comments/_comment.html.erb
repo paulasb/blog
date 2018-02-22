@@ -1,0 +1,20 @@
+<!-- funcao para o show -->
+<p>
+  <strong>Nome:</strong>
+  <%= comment.commenter %>
+</p>
+ 
+<p>
+  <strong>Comentário:</strong>
+  <%= comment.body %>
+</p>
+
+<p>
+  <%= link_to 'Deletar comentário', [comment.article, comment],
+               method: :delete,
+               data: { confirm: 'Você tem certeza?' } %>
+</p>
+
+<p>
+   <p><%= link_to 'Editar comentário', edit_article_comment_path(comment.article) %></p>
+</p>

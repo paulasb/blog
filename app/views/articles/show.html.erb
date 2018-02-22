@@ -7,5 +7,21 @@
   <strong>Texto:</strong>
   <%= @article.text %>
 </p>
-<%= link_to 'Editar', edit_article_path(@article) %> |
+
+<%= link_to 'Editar post', edit_article_path(@article) %> |
 <%= link_to 'Voltar', articles_path %>
+
+<h2>Comentários</h2>
+<!-- chama a função de _comment -->
+<%= render @article.comments %>
+
+<h2>Adicione um comentário:</h2>
+<!-- chama a função de _form -->
+<%= render 'comments/form' %>
+ 
+
+ 
+
+
+
+

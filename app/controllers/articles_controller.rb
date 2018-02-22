@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-  def edit
+  def edit 
     @article = Article.find(params[:id])
   end
 
@@ -45,7 +45,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article
     else
-      render 'edit'
+      redirect_to edit_article_path(@article)
     end
   end
 
