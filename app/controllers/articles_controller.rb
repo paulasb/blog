@@ -4,7 +4,6 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
   end
-
   # redireciona-se o usuario para o show action acima
   def show
     @article = Article.find(params[:id])
@@ -52,7 +51,6 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-
     redirect_to articles_path
   end
 
