@@ -10,7 +10,7 @@
 		</h6>
  	  </div>
  	  <div style="padding-right: 10px;">
- 	  <%= link_to 'Editar', edit_article_comment_path(comment.article), class:"btn btn-primary" %>
+ 	  <%= link_to 'Editar', edit_article_comment_path(comment.article, comment), class:"btn btn-primary" %>
       </div>
       <%= link_to 'Deletar', [comment.article, comment],
                method: :delete,

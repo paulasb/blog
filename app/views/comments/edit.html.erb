@@ -1,14 +1,42 @@
-<!-- funcao para -->
-<%= form_with(model: [@article, @article.comments.build ]) do |form| %>
-  <p>
-    <%= form.label :commenter, 'Nome' %><br>
-    <%= form.text_field :commenter%>
-  </p>
-  <p>
-    <%= form.label :body, 'Comentário' %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit 'Modificar comentário',  %>
-  </p>
-<% end %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Comida Mineira</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="my-4">Editar post</h2>
+      <%= form_with(model: [@article, @comment]) do |form| %>
+          <div class="form-group">
+            <p>
+              <%= form.label :Nome %><br>
+              <%= form.text_field :commenter, class:"form-control"  %>
+            </p>
+            <p>
+              <%= form.label :Comentário %><br>
+              <%= form.text_area :body, class:"form-control" %>
+            </p>
+          </div>
+          <p>
+            <%= form.submit 'Enviar comentário', class:"btn btn-primary" %>
+          </p>
+        <% end %> 
+  <%= link_to 'Voltar', articles_path, class:"btn btn-secondary"  %>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@
   <h5 class="card-header">Deixe um comentário:</h5>
     <div class="card-body">
       <div class="form-group">
-        <%= form_with(model: [ @article, @article.comments.build ]) do |form| %>
+        <%= form_with(model: @comment) do |form| %>
           <div class="form-group">
             <p>
               <%= form.label :Nome %><br>
