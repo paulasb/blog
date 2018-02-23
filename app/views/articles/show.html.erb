@@ -1,27 +1,81 @@
-<p>
-  <strong>Título:</strong>
-  <%= @article.title %>
-</p>
- 
-<p>
-  <strong>Texto:</strong>
-  <%= @article.text %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <br>
+      <h1>
+	  	<strong></strong>
+	  	<%= @article.title %>
+	  </h1>
+      <hr>
+      <img class="img-fluid rounded" src="https://images2.nogueirense.com.br/wp-content/uploads/2014/06/Minas-Gerais-feijao-tropeiro.jpeg" alt="">
+      <hr>
+      <p class="lead">
+  		<%= @article.text %>
+	  </p>
+      <hr>
+      <h4>Comentários:</h4>
+      <br>
+      <%= render @article.comments %>
 
-<%= link_to 'Editar post', edit_article_path(@article) %> |
-<%= link_to 'Voltar', articles_path %>
+      <!--<h2>Add a comment:</h2>-->
+      <hr>
+	  <%= render 'comments/form' %>
+	</div>
 
-<h2>Comentários</h2>
-<!-- chama a função de _comment -->
-<%= render @article.comments %>
+    <!-- Sidebar Widgets Column -->
+    <div class="col-md-4">
 
-<h2>Adicione um comentário:</h2>
-<!-- chama a função de _form -->
-<%= render 'comments/form' %>
- 
+      <!-- Search Widget -->
+      <div class="card my-4">
+        <h5 class="card-header">Busca</h5>
+        <div class="card-body">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Busque por...">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button">Ir!</button>
+            </span>
+          </div>
+        </div>
+      </div>
 
- 
+      <!-- Categories Widget -->
+      <div class="card my-4">
+        <h5 class="card-header">Veja também</h5>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#">Entradas</a>
+                </li>
+                <li>
+                  <a href="#">Pratos salgados</a>
+                </li>
+                <li>
+                  <a href="#">Sobremesas</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#">Saladas</a>
+                </li>
+                <li>
+                  <a href="#">Carnes</a>
+                </li>
+                <li>
+                  <a href="#">Doces</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-
-
+  </div>
+  <%= link_to 'Editar post', edit_article_path(@article), class:"btn btn-secondary" %>
+  <%= link_to 'Voltar', articles_path, class:"btn btn-secondary"%>
+</div>
 

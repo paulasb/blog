@@ -2,16 +2,16 @@ class CommentsController < ApplicationController
 
   def edit 
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
+    @comment = @article.comments.find(comment_params)
   end
 
   def update
-    @article = Article.find(params[:id])
+    @article = Article.find(params[:article_id])
 
-    if @article.update(article_params)
-      redirect_to @article
+    if @article.comments.update(comment_params)
+      redirect_to article_path(@article)
     else
-      redirect_to edit_article_comment_path(@article)
+      render 'edit'
     end
   end
 
@@ -32,6 +32,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:commenter, :body)
+      params.require(:comment).permit(:commenter, :body)
   end
 end

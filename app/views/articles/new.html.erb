@@ -1,15 +1,30 @@
-<div class="row" style="padding: 30px;">
-  <div class="col-md-4" style="border: 5px solid;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Comida Mineira</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    <h1>Novo Post</h1>
-	 
-	<%= form_with scope: :article, url: articles_path, local: true do |form| %>
-	 
-	  <% if @article.errors.any? %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="my-4">Criar post</h2>
+      <%= form_with scope: :article, url: articles_path, local: true do |form| %>
+	    <% if @article.errors.any? %>
 	    <div id="error_explanation">
 	      <h2>
-	 	    <%- # tutorial está diferente, olhar primeiro link git, na parte de Adding Some Validation -%>
-	        Post possui erros:
+	 	    Post possui erros:
 	      </h2>
 	      <ul>
 	        <% @article.errors.full_messages.each do |msg| %>
@@ -18,31 +33,23 @@
 	      </ul>
 	    </div>
 	  <% end %>
-	 
 	  <div class="form-group">
 		<p>
 		  <%= form.label :Título%><br>
-		  <%= form.text_field :title, class:"titulo" %>
+		  <%= form.text_field :title, class:"form-control" %>
 		</p>
 	  </div>
-		 
 	  <div class="form-group">	 
 		<p>
 		  <%= form.label :Texto %><br>
-		  <%= form.text_area :text,  class:"texto" %>
+		  <%= form.text_area :text, class:"form-control" %>
 		</p>
 	  </div>
-
-	  <div class="actions">
-		<p>
-		  <%= form.submit 'Criar Post', class:"btn btn-primary" %>
-		</p>
-	  </div>
-	 
+      <p>
+	    <%= form.submit 'Criar Post', class:"btn btn-primary" %>
+	  </p>
 	<% end %>
-	 
-	<%= link_to 'Voltar', articles_path %>
-  
+	<%= link_to 'Voltar', articles_path, class:"btn btn-secondary"  %>
     </div>
   </div>
 </div>

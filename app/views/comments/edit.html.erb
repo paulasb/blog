@@ -1,5 +1,5 @@
 <!-- funcao para -->
-<%= form_with(model: [ @article, @article.comments.build ]) do |form| %>
+<%= form_with(model: [@article, @article.comments.build ]) do |form| %>
   <p>
     <%= form.label :commenter, 'Nome' %><br>
     <%= form.text_field :commenter%>
@@ -9,6 +9,6 @@
     <%= form.text_area :body %>
   </p>
   <p>
-    <%= form.submit 'Criar comentário' %>
+    <%= form.submit 'Modificar comentário',  %>
   </p>
 <% end %>
