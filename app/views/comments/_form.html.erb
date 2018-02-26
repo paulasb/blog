@@ -1,23 +1,23 @@
 <!-- funcao para show-->
-<div class="card my-4">
-  <h5 class="card-header">Deixe um comentário:</h5>
-    <div class="card-body">
-      <div class="form-group">
-        <%= form_with(model: @comment) do |form| %>
-          <div class="form-group">
+  <div class="card my-4">
+    <h5 class="card-header">Deixe um comentário:</h5>
+      <div class="card-body">
+        <div class="form-group">
+          <%= form_with(model: [ @article, @article.comments.build ]) do |form| %>
+            <div class="form-group">
+              <p>
+                <%= form.label :Nome %><br>
+                <%= form.text_field :commenter, class:"form-control"  %>
+              </p>
+              <p>
+                <%= form.label :Comentário %><br>
+                <%= form.text_area :body, class:"form-control" %>
+              </p>
+            </div>
             <p>
-              <%= form.label :Nome %><br>
-              <%= form.text_field :commenter, class:"form-control"  %>
+              <%= form.submit 'Enviar comentário', class:"btn btn-primary" %>
             </p>
-            <p>
-              <%= form.label :Comentário %><br>
-              <%= form.text_area :body, class:"form-control" %>
-            </p>
-          </div>
-          <p>
-            <%= form.submit 'Enviar comentário', class:"btn btn-primary" %>
-          </p>
-        <% end %> 
+          <% end %> 
+        </div>
       </div>
-    </div>
-</div>
+  </div>

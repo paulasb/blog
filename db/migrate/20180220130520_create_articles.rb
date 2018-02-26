@@ -6,6 +6,9 @@ class CreateArticles < ActiveRecord::Migration[5.1]
       t.text :text
 
       t.timestamps
+      
+      extend FriendlyId
+	  friendly_id :title, use: :slugged
     end
   end
 end
