@@ -8,7 +8,6 @@ que serão utilizadas, esse código é chamada por meio de:
 <= render 'form' > , verificar sintaxe, falta %--> 
 
 <%= form_with model: @article, local: true do |form| %>
- 
   <% if @article.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -22,7 +21,6 @@ que serão utilizadas, esse código é chamada por meio de:
       </ul>
     </div>
   <% end %>
- 
   <p>
     <%= form.label :Título %><br>
     <%= form.text_field :title %>
