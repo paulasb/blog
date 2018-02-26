@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery_ujs
+<<<<<<< Updated upstream
 //= require manual
 //= require turbolinks
 //= require_tree .
@@ -18,3 +19,8 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+=======
+//= require turbolinks
+//= require bootstrap-sprockets
+//= require_tree .
+>>>>>>> Stashed changes

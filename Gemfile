@@ -9,6 +9,8 @@ end
 gem 'rails', '~> 5.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+# Use postgres as the database for Active Record
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -34,8 +36,29 @@ gem 'friendly_id'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+<<<<<<< Updated upstream
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
+=======
+
+gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'autoprefixer-rails'
+
+gem 'font-awesome-rails'
+# Friendly Id - Slug
+gem 'friendly_id', '~> 5.1.0'
+
+# para criação de autenticacao de usuario
+gem 'devise'
+
+#group :production do
+#  gem 'pg'
+#end
+
+#group :development, :test do
+#  gem 'sqlite3'
+#end
+>>>>>>> Stashed changes
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

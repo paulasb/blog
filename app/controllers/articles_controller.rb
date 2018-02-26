@@ -1,5 +1,5 @@
 # controler dos posts
-class ArticlesController < ApplicationController
+class ArticlesController < ApplicationController  
   # para ver todos os articles
   def index
     @articles = Article.all
