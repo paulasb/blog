@@ -9,19 +9,23 @@
   <body>
   	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	  <div class="container">
-	    <a class="navbar-brand" href="#">Comida Mineira</a>
+	    
+	    <li class="navbar-brand" href="#">Home</li>
+	    
+
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
 	    <div class="collapse navbar-collapse" id="navbarResponsive">
 	      <ul class="navbar-nav ml-auto">
 	        <li class="nav-item active">
-	          <a class="nav-link" href="#">Home
-	            <span class="sr-only">(current)</span>
-	          </a>
+	            <%= link_to 'Home', root_path, class:"nav-link" %>
 	        </li>
 	        <li class="nav-item active">
 	          <%= link_to 'Criar novo post', new_article_path, class:"nav-link"%>
+	        </li>
+	        <li class="nav-item active">
+	            <%= link_to 'Posts', articles_path, class:"nav-link" %>
 	        </li>
 	        <li class="nav-item active">
 	          <%= link_to 'Sair',  destroy_user_session_path, method: :delete, class:"nav-link"%>
@@ -33,7 +37,7 @@
 	<hr>
 	<hr>
 	<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p class="alert alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
