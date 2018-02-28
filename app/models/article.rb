@@ -1,5 +1,10 @@
 #
 class Article < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  def should_generate_new_friendly_id?
+ 	title_changed?
+  end
   # isso indica a relacao no banco de 1 article para muitos comentarios
   # e ainda, toda vez que um post for deletado,
   # os comentarios tb serao -> dependent

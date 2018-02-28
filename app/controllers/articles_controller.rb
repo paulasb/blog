@@ -1,5 +1,8 @@
 # controler dos posts
 class ArticlesController < ApplicationController
+  # para não precisar colocar o friendly em todos os find
+  # olhar função find_article também, ela que mostra o friendly
+  before_action :find_article, only: %i[show edit update destoy] 
   # para ver todos os articles
   def index
     @articles = Article.all
@@ -7,7 +10,7 @@ class ArticlesController < ApplicationController
 
   # redireciona-se o usuario para o show action acima
   def show
-    @article = Article.find(params[:id])
+    #@article = Article.friendly.find(params[:id])
   end
 
   def new
@@ -15,7 +18,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit 
-    @article = Article.find(params[:id])
+    #@article = Article.friendly.find(params[:id])
   end
 
   # para usar o Article model para salvar os dados no banco de dados
@@ -40,9 +43,10 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find(params[:id])
+    #@article = Article.friendly.find(params[:id])
 
     if @article.update(article_params)
+      #flash[:notice] = "Post editado com sucesso"
       redirect_to @article
     else
       render 'edit'
@@ -50,7 +54,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
+    #@article = Article.friendly.find(params[:id])
     @article.destroy
 
     redirect_to articles_path
@@ -62,6 +66,10 @@ class ArticlesController < ApplicationController
     # para eivtar que
     # violem os campos do form?
     params.require(:article).permit(:title, :text)
+  end
+
+  def find_article
+    @article = Article.friendly.find(params[:id])
   end
 
   # mostra os parametros (atributos) do formulario, os valores inseridos
