@@ -23,12 +23,17 @@
 	        <li class="nav-item active">
 	          <%= link_to 'Criar novo post', new_article_path, class:"nav-link"%>
 	        </li>
+	        <li class="nav-item active">
+	          <%= link_to 'Sair',  destroy_user_session_path, method: :delete, class:"nav-link"%>
+	        </li>
 	      </ul>
 	    </div>
 	  </div>
 	</nav>
 	<hr>
 	<hr>
+	<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
