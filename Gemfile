@@ -34,8 +34,6 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap', '~> 4.0.0.alpha6'
 
-#gem 'devise'
-
 # Friendly Id - Slug
 gem 'friendly_id', '~> 5.1.0'
 
