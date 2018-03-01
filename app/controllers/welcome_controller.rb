@@ -1,4 +1,6 @@
 # mostra a pagina home do blog
 class WelcomeController < ApplicationController
-  def index; end
+  def index
+  	@ultimo_post = Article.last
+  end
 end
