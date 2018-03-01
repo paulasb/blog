@@ -37,6 +37,7 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 # Friendly Id - Slug
 gem 'friendly_id', '~> 5.1.0'
 
+gem 'will_paginate', '~> 3.1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

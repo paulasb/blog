@@ -68,13 +68,28 @@
             </div>
           </div>
         </div>
+
       </div>
+
     </div>
   </div>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <%= will_paginate @articles, :page_links => false, :previous_label => "Anterior", :next_label => "Próximo", :class => 'page-link' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
 <footer class="py-5 bg-dark">
   <div class="container">
     <p class="m-0 text-center text-white"></p>
   </div>
-  <!-- /.container -->
 </footer>
