@@ -2,16 +2,16 @@
 class ArticlesController < ApplicationController
   # para não precisar colocar o friendly em todos os find
   # olhar função find_article também, ela que mostra o friendly
-  before_action :find_article, only: %i[show edit update destoy] 
+  before_action :find_article, only: %i[show edit update destroy] 
   # para ver todos os articles
   def index
-    #@articles = Article.all
     @articles = Article.paginate(:page => params[:page], :per_page => 3)
   end
 
   # redireciona-se o usuario para o show action acima
   def show
-    #@article = Article.friendly.find(params[:id])
+    @article = Article.friendly.find(params[:id])
+    @comments = @article.comments.paginate(:page => params[:page], :per_page => 3)
   end
 
   def new
