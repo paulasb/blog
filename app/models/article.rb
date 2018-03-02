@@ -9,6 +9,7 @@ class Article < ApplicationRecord
   # e ainda, toda vez que um post for deletado,
   # os comentarios tb serao -> dependent
   has_many :comments, dependent: :destroy
+  belongs_to :user
   # o titulo deve existir (presence) e ter no maximo 50 caracteres (lenth)
   validates :title, presence: true, length: { maximum: 50 }
   validates :text, presence: true, length: { maximum: 500 }

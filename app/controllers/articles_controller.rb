@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
   # para ver todos os articles
   def index
     @articles = Article.all
+    #@articles = current_user.articles
   end
 
   # redireciona-se o usuario para o show action acima
@@ -28,7 +29,9 @@ class ArticlesController < ApplicationController
     # entao cria-se a funcao "article_params" abaixo e fica assim:
     # @article = Article.new(article_params)
     # isso e feito para quais parametros sao permitidos na acao do controller
+    
     @article = Article.new(article_params)
+    #@article = current_user.article.new(params[:post])
 
     # esse if indica para o usuario qual o erro da validacao no formulario
     # apesar da validacao estar ok em app/models/article
