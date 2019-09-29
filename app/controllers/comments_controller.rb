@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+ 
   def edit 
     @article = Article.friendly.find(params[:article_id])
     @comment = @article.comments.find(params[:id])

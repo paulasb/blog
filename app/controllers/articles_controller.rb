@@ -2,15 +2,15 @@
 class ArticlesController < ApplicationController
   # para não precisar colocar o friendly em todos os find
   # olhar função find_article também, ela que mostra o friendly
-  before_action :find_article, only: %i[show edit update destoy] 
+  before_action :find_article, only: %i[show edit update destroy] 
   # para ver todos os articles
   def index
-    @articles = Article.all
+    @articles = Article.paginate(:page => params[:page], :per_page => 3)
   end
 
   # redireciona-se o usuario para o show action acima
   def show
-    #@article = Article.friendly.find(params[:id])
+    @comments = @article.comments.paginate(:page => params[:page], :per_page => 3)
   end
 
   def new
@@ -28,14 +28,17 @@ class ArticlesController < ApplicationController
     # entao cria-se a funcao "article_params" abaixo e fica assim:
     # @article = Article.new(article_params)
     # isso e feito para quais parametros sao permitidos na acao do controller
-    @article = Article.new(article_params)
-
+    # @article = Article.new(article_params)
+    # @article.user = current_user
+    @article = current_user.articles.create(article_params)
+    #@article = current_user.articles.new(article_params)
+    ##@post = current_user.posts.build(params[:post])
     # esse if indica para o usuario qual o erro da validacao no formulario
     # apesar da validacao estar ok em app/models/article
     # ela deve ser mostrada ao usuario
     if @article.save
       # faz uma nova requisicao,
-      # mostrando o article que abacou de ser criado?
+      # mostrando o article que acabou de ser criado?
       redirect_to @article
     else
       render 'new' # nao faz requisicao, apenas recarrega a pagina?
@@ -44,20 +47,23 @@ class ArticlesController < ApplicationController
 
   def update
     #@article = Article.friendly.find(params[:id])
-
-    if @article.update(article_params)
-      #flash[:notice] = "Post editado com sucesso"
-      redirect_to @article
-    else
-      render 'edit'
+    if @article.user == current_user  
+      if @article.update(article_params)
+        #flash[:notice] = "Post editado com sucesso"
+        redirect_to @article
+      else
+        render 'edit'
+      end
     end
   end
 
   def destroy
     #@article = Article.friendly.find(params[:id])
-    @article.destroy
+    if @article.user == current_user
+      @article.destroy
 
-    redirect_to articles_path
+      redirect_to articles_path
+    end
   end
 
   private
@@ -72,6 +78,7 @@ class ArticlesController < ApplicationController
     @article = Article.friendly.find(params[:id])
   end
 
+  
   # mostra os parametros (atributos) do formulario, os valores inseridos
   # def create
   # render plain: params[:article].inspec
